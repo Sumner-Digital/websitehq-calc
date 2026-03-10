@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #1B4D7A;
+  --color-primary-dark: #0F3355;
+  --color-accent: #E8443A;
+  --color-accent-dark: #C4322A;
+  --color-surface: #F4F7FA;
+  --color-card: #FFFFFF;
+  --color-txt: #1A2332;
+  --color-txt-light: #5A6B7F;
+  --color-border: #DDE3EB;
+  --color-green-bg: #E8F9EE;
+  --color-green-text: #0A7B3E;
+  --color-blue-bg: #E8F0FA;
+  --color-red-bg: #FEF2F2;
+  --color-red-text: #C0392B;
+  --color-orange-bg: #FFF7ED;
+  --color-orange-text: #C2410C;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-txt);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ─── Range Slider Styles ─── */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  background: #DDE3EB;
+}
+
+/* Webkit (Chrome, Safari, Edge) - Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* Webkit - Thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #E8443A;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  margin-top: -6px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(232, 68, 58, 0.35);
+}
+
+/* Firefox - Track */
+input[type="range"]::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: #DDE3EB;
+}
+
+/* Firefox - Filled portion */
+input[type="range"]::-moz-range-progress {
+  height: 8px;
+  border-radius: 4px;
+  background: #E8443A;
+}
+
+/* Firefox - Thumb */
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #E8443A;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(232, 68, 58, 0.35);
+}
