@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(lsof:*)",
+      "Bash(open:*)",
+      "Bash(kill 98639)",
+      "Bash(kill -9 98639)",
+      "WebFetch(domain:tgi-greek.netlify.app)",
+      "WebFetch(domain:websitehq.com)"
+    ]
+  }
+}
