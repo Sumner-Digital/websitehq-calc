@@ -98,7 +98,7 @@ function InputField({
           step={step ?? 1}
           value={Math.min(Math.max(value, sliderMin), sliderMax)}
           onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="mt-2.5"
+          className="mt-2.5 w-full block"
           style={{
             background: `linear-gradient(to right, #E8443A 0%, #E8443A ${pct}%, #DDE3EB ${pct}%, #DDE3EB 100%)`,
           }}
