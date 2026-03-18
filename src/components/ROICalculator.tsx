@@ -291,7 +291,7 @@ export default function ROICalculator() {
     <div className="min-h-screen bg-surface">
       {/* ─── Warning Modal ─── */}
       {showWarning && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-8 p-4">
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/60" />
 
@@ -413,18 +413,6 @@ export default function ROICalculator() {
           </div>
         </div>
       )}
-
-      {/* ─── Hero Banner ─── */}
-      <div className="bg-gradient-to-br from-primary to-primary-dark py-12 px-6 text-center">
-        <h1 className="text-[2.2rem] max-md:text-[1.6rem] font-bold text-white tracking-tight mb-2">
-          What Is WordPress Really Costing You?
-        </h1>
-        <p className="text-[1.1rem] text-white/90 max-w-[640px] mx-auto">
-          Most business owners have no idea how much money and time they pour
-          into their WordPress site every month. Enter your numbers below and see
-          the real cost.
-        </p>
-      </div>
 
       {/* ─── Main Content ─── */}
       <div className="max-w-[1100px] mx-auto px-5 py-8 pb-[60px] max-md:px-3.5 max-md:py-5 max-md:pb-10">
