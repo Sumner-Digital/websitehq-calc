@@ -511,46 +511,6 @@ export default function ROICalculator() {
               />
             </div>
 
-            {/* Card 3: WebsiteHQ */}
-            <div className="bg-card rounded-[14px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] p-7 border-2 border-green-text/20">
-              <div className="text-[1.1rem] font-bold text-green-text mb-5 flex items-center gap-2">
-                <span className="w-7 h-7 rounded-lg bg-green-bg flex items-center justify-center text-sm shrink-0">
-                  3
-                </span>
-                WebsiteHQ (Everything Included)
-              </div>
-              <div className="bg-green-bg rounded-xl p-5">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-[0.9rem] font-semibold text-txt">
-                    WebsiteHQ Monthly Plan
-                  </span>
-                  <span className="text-[1.3rem] font-extrabold text-green-text">
-                    {fmt(websiteHQMonthly)}/mo
-                  </span>
-                </div>
-                <ul className="space-y-1.5">
-                  {[
-                    "Hosting included",
-                    "All WordPress & Plugin Updates Handled",
-                    "Multiple Daily Backups Included",
-                    "Image Optimization",
-                    "Uptime Monitoring",
-                    "White Glove Migration",
-                    "99.99% Uptime",
-                    "Free SSL Certificate",
-                    "Priority Support with our Dedicated Team",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="text-[0.8rem] text-green-text font-medium flex items-center gap-2"
-                    >
-                      <span className="text-green-text text-sm">&#10003;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
           </div>
 
           {/* ─── RIGHT: Results Panel ─── */}
@@ -727,6 +687,10 @@ export default function ROICalculator() {
                 </div>
               </div>
             )}
+
+            <button className="w-full bg-gradient-to-br from-primary to-primary-dark text-white py-4 rounded-[10px] text-base font-bold shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(27,77,122,0.3)] transition-all cursor-pointer mt-4">
+              Get Started Now
+            </button>
           </div>
         </div>
 
