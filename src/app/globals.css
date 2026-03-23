@@ -51,6 +51,7 @@ input[type="range"] {
   outline: none;
   cursor: pointer;
   background: #DDE3EB;
+  touch-action: none;
 }
 
 /* Webkit (Chrome, Safari, Edge) - Track */
@@ -108,4 +109,18 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-moz-range-thumb:hover {
   transform: scale(1.15);
   box-shadow: 0 2px 8px rgba(232, 68, 58, 0.35);
+}
+
+/* Mobile: larger thumb for easier touch */
+@media (max-width: 768px) {
+  input[type="range"]::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+    margin-top: -10px;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+  }
 }

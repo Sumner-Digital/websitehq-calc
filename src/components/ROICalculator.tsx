@@ -91,18 +91,20 @@ function InputField({
         )}
       </div>
       {max != null && (
-        <input
-          type="range"
-          min={min ?? 0}
-          max={max}
-          step={step ?? 1}
-          value={Math.min(Math.max(value, sliderMin), sliderMax)}
-          onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="mt-2.5 w-full block"
-          style={{
-            background: `linear-gradient(to right, #E8443A 0%, #E8443A ${pct}%, #DDE3EB ${pct}%, #DDE3EB 100%)`,
-          }}
-        />
+        <div className="py-3 -my-1">
+          <input
+            type="range"
+            min={min ?? 0}
+            max={max}
+            step={step ?? 1}
+            value={Math.min(Math.max(value, sliderMin), sliderMax)}
+            onChange={(e) => onChange(parseFloat(e.target.value))}
+            className="mt-0 w-full block"
+            style={{
+              background: `linear-gradient(to right, #E8443A 0%, #E8443A ${pct}%, #DDE3EB ${pct}%, #DDE3EB 100%)`,
+            }}
+          />
+        </div>
       )}
     </div>
   );
@@ -782,7 +784,9 @@ export default function ROICalculator() {
         <h2 className="text-[1.3rem] font-bold text-txt text-center mt-10 mb-5">
           WordPress vs. WebsiteHQ
         </h2>
-        <div className="bg-card rounded-[14px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] overflow-hidden">
+
+        {/* Desktop Table */}
+        <div className="hidden md:block bg-card rounded-[14px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] overflow-hidden">
           <table className="w-full border-collapse">
             <thead>
               <tr>
@@ -798,74 +802,50 @@ export default function ROICalculator() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem]">
-                  Monthly Cost (Cash)
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right font-semibold text-red-text">
-                  {fmt(calc.totalWPMonthlyCost)}
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right bg-green-bg font-bold text-green-text">
-                  {fmt(websiteHQMonthly)}
-                </td>
-              </tr>
-              <tr>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem]">
-                  Your Time Each Month
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right font-semibold text-red-text">
-                  {calc.totalTimeHoursMonth} hours
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right bg-green-bg font-bold text-green-text">
-                  0
-                </td>
-              </tr>
-              <tr>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem]">
-                  Updates & Maintenance
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right">
-                  You or your developer
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right bg-green-bg font-bold text-green-text">
-                  Handled for you
-                </td>
-              </tr>
-              <tr>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem]">
-                  Security & Hacking Risk
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right">
-                  Constant threat
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right bg-green-bg font-bold text-green-text">
-                  Built-in protection
-                </td>
-              </tr>
-              <tr>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem]">
-                  Downtime &amp; Recovery
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right">
-                  Costly and unpredictable
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right bg-green-bg font-bold text-green-text">
-                  24/7 monitoring included
-                </td>
-              </tr>
-              <tr>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem]">
-                  Site Speed
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right">
-                  Depends on hosting & optimization
-                </td>
-                <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right bg-green-bg font-bold text-green-text">
-                  Optimized by default
-                </td>
-              </tr>
+              {[
+                { label: "Monthly Cost (Cash)", wp: fmt(calc.totalWPMonthlyCost), whq: fmt(websiteHQMonthly), wpColor: "text-red-text font-semibold" },
+                { label: "Your Time Each Month", wp: `${calc.totalTimeHoursMonth} hours`, whq: "0", wpColor: "text-red-text font-semibold" },
+                { label: "Updates & Maintenance", wp: "You or your developer", whq: "Handled for you", wpColor: "" },
+                { label: "Security & Hacking Risk", wp: "Constant threat", whq: "Built-in protection", wpColor: "" },
+                { label: "Downtime & Recovery", wp: "Costly and unpredictable", whq: "24/7 monitoring included", wpColor: "" },
+                { label: "Site Speed", wp: "Depends on hosting & optimization", whq: "Optimized by default", wpColor: "" },
+              ].map((row) => (
+                <tr key={row.label}>
+                  <td className="py-3 px-5 border-b border-border text-[0.9rem]">{row.label}</td>
+                  <td className={`py-3 px-5 border-b border-border text-[0.9rem] text-right ${row.wpColor}`}>{row.wp}</td>
+                  <td className="py-3 px-5 border-b border-border text-[0.9rem] text-right bg-green-bg font-bold text-green-text">{row.whq}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Cards */}
+        <div className="md:hidden space-y-3">
+          {[
+            { label: "Monthly Cost (Cash)", wp: fmt(calc.totalWPMonthlyCost), whq: fmt(websiteHQMonthly), wpColor: "text-red-text" },
+            { label: "Your Time Each Month", wp: `${calc.totalTimeHoursMonth} hours`, whq: "0", wpColor: "text-red-text" },
+            { label: "Updates & Maintenance", wp: "You or your developer", whq: "Handled for you", wpColor: "text-txt-light" },
+            { label: "Security & Hacking Risk", wp: "Constant threat", whq: "Built-in protection", wpColor: "text-txt-light" },
+            { label: "Downtime & Recovery", wp: "Costly and unpredictable", whq: "24/7 monitoring included", wpColor: "text-txt-light" },
+            { label: "Site Speed", wp: "Depends on hosting & optimization", whq: "Optimized by default", wpColor: "text-txt-light" },
+          ].map((row) => (
+            <div key={row.label} className="bg-card rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] overflow-hidden">
+              <div className="bg-primary text-white py-2.5 px-4 text-[0.85rem] font-semibold">
+                {row.label}
+              </div>
+              <div className="grid grid-cols-2">
+                <div className="py-3 px-4 border-r border-border">
+                  <div className="text-[0.7rem] text-txt-light font-semibold uppercase tracking-wider mb-1">WordPress</div>
+                  <div className={`text-[0.85rem] font-semibold ${row.wpColor}`}>{row.wp}</div>
+                </div>
+                <div className="py-3 px-4 bg-green-bg">
+                  <div className="text-[0.7rem] text-txt-light font-semibold uppercase tracking-wider mb-1">WebsiteHQ</div>
+                  <div className="text-[0.85rem] font-bold text-green-text">{row.whq}</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* ─── Assumptions & Notes ─── */}
